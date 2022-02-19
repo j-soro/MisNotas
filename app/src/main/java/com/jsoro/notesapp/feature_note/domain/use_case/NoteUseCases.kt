@@ -6,5 +6,6 @@ package com.jsoro.notesapp.feature_note.domain.use_case
 // aplicación de forma que la ejecución es controlada y no hay fugas de memoria o entidades zombie.
 data class NoteUseCases(
     val getNotes: GetNotes,
-    val deleteNote: DeleteNote
+    val deleteNote: DeleteNote,
+    val addNote: AddNote
 )

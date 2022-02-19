@@ -16,3 +16,6 @@ data class Note(
         val noteColors = listOf(RedOrange, LightGreen, Violet, BabyBlue, RedPink)
     }
 }
+
+// Error lanzado en caso de insertar una nota que no cumpla con la validación (título vacío).
+class InvalidNoteException(message: String): Exception(message)
