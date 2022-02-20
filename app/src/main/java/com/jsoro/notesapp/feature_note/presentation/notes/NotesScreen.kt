@@ -1,5 +1,7 @@
 package com.jsoro.notesapp.feature_note.presentation.notes
 
+import android.app.UiModeManager.MODE_NIGHT_YES
+import androidx.appcompat.app.AppCompatDelegate
 import androidx.compose.animation.*
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
@@ -9,6 +11,7 @@ import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Add
 import androidx.compose.material.icons.filled.Sort
+import androidx.compose.material.icons.filled.StickyNote2
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Alignment
@@ -75,6 +78,10 @@ fun NotesScreen(
                 horizontalArrangement = Arrangement.SpaceBetween,
                 verticalAlignment = Alignment.CenterVertically
             ) {
+                Icon(
+                    imageVector = Icons.Default.StickyNote2,
+                    contentDescription = "Icono"
+                )
                 Text(
                     text = "Mis Notas",
                     style = MaterialTheme.typography.h4

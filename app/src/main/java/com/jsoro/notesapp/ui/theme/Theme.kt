@@ -13,14 +13,23 @@ private val DarkColorPalette = darkColors(
     onSurface = DarkGray
 )
 
+private val LightColorPalette = darkColors(
+    primary = Color.Black,
+    background = Color.LightGray,
+    onBackground = Color.Gray,
+    surface = LightBlue,
+    onSurface = Color.Blue
+)
+
 // A esta función @Composable le pasamos los estilos deseados para nuestra app
 // además del contenido y es la responsable de generar toda la composición visual
 // a partir de los distintos componentes de cada vista.
 
 @Composable
 fun NoteAppTheme(darkTheme: Boolean = true, content: @Composable() () -> Unit) {
+
     MaterialTheme(
-        colors =  DarkColorPalette,
+        colors =  if (darkTheme) DarkColorPalette else LightColorPalette,
         typography = Typography,
         shapes = Shapes,
         content = content
