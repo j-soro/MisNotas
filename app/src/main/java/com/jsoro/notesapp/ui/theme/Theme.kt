@@ -13,10 +13,14 @@ private val DarkColorPalette = darkColors(
     onSurface = DarkGray
 )
 
+// A esta función @Composable le pasamos los estilos deseados para nuestra app
+// además del contenido y es la responsable de generar toda la composición visual
+// a partir de los distintos componentes de cada vista.
+
 @Composable
-fun CleanArchitectureNoteAppTheme(darkTheme: Boolean = true, content: @Composable() () -> Unit) {
+fun NoteAppTheme(darkTheme: Boolean = true, content: @Composable() () -> Unit) {
     MaterialTheme(
-        colors = DarkColorPalette,
+        colors =  DarkColorPalette,
         typography = Typography,
         shapes = Shapes,
         content = content
