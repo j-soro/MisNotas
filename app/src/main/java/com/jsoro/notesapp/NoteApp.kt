@@ -9,7 +9,8 @@ import dagger.hilt.android.HiltAndroidApp
 
 // Para poder inyectar dependencias debemos incluir esta clase en el archivo
 // AndroidManifest.xml con el atributo android:name=".NombreClase".
-// Además tendremos un módulo DI con singletons para cada clase que queramos inyectar.
+// Además tendremos un módulo DI con si
+// Singletons para cada clase que queramos inyectar.
 
 @HiltAndroidApp
 class NoteApp : Application()

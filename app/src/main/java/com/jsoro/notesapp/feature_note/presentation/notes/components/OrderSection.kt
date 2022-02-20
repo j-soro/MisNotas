@@ -23,43 +23,46 @@ fun OrderSection(
     Column(
         modifier = modifier
     ) {
-        DefaultRadioButton(
-            text = "Título",
-            selected = noteOrder is NoteOrder.Title,
-            onSelect = { onOrderChanged(NoteOrder.Title(noteOrder.orderType)) }
-        )
-        Spacer(modifier = Modifier.width(10.dp))
-        DefaultRadioButton(
-            text = "Fecha",
-            selected = noteOrder is NoteOrder.Date,
-            onSelect = { onOrderChanged(NoteOrder.Date(noteOrder.orderType)) }
-        )
-        Spacer(modifier = Modifier.width(10.dp))
-        DefaultRadioButton(
-            text = "Color",
-            selected = noteOrder is NoteOrder.Color,
-            onSelect = { onOrderChanged(NoteOrder.Color(noteOrder.orderType)) }
-        )
-    }
-    Spacer(modifier = Modifier.height(16.dp))
-    Row(
-        modifier = Modifier.fillMaxWidth()
-    ){
-        DefaultRadioButton(
-            text = "Ascendiente",
-            selected = noteOrder.orderType is OrderType.Ascending,
-            onSelect = {
-                onOrderChanged(noteOrder.copy(OrderType.Ascending))
-            }
-        )
-        Spacer(modifier = Modifier.width(10.dp))
-        DefaultRadioButton(
-            text = "Descendiente",
-            selected = noteOrder.orderType is OrderType.Descending,
-            onSelect = {
-                onOrderChanged(noteOrder.copy(OrderType.Descending))
-            }
-        )
-
+        Row(
+            modifier = Modifier.fillMaxWidth()
+        ) {
+            DefaultRadioButton(
+                text = "Título",
+                selected = noteOrder is NoteOrder.Title,
+                onSelect = { onOrderChanged(NoteOrder.Title(noteOrder.orderType)) }
+            )
+            Spacer(modifier = Modifier.width(8.dp))
+            DefaultRadioButton(
+                text = "Fecha",
+                selected = noteOrder is NoteOrder.Date,
+                onSelect = { onOrderChanged(NoteOrder.Date(noteOrder.orderType)) }
+            )
+            Spacer(modifier = Modifier.width(8.dp))
+            DefaultRadioButton(
+                text = "Color",
+                selected = noteOrder is NoteOrder.Color,
+                onSelect = { onOrderChanged(NoteOrder.Color(noteOrder.orderType)) }
+            )
+        }
+        Spacer(modifier = Modifier.height(16.dp))
+        Row(
+            modifier = Modifier.fillMaxWidth()
+        ) {
+            DefaultRadioButton(
+                text = "Ascendente",
+                selected = noteOrder.orderType is OrderType.Ascending,
+                onSelect = {
+                    onOrderChanged(noteOrder.copy(OrderType.Ascending))
+                }
+            )
+            Spacer(modifier = Modifier.width(8.dp))
+            DefaultRadioButton(
+                text = "Descendente",
+                selected = noteOrder.orderType is OrderType.Descending,
+                onSelect = {
+                    onOrderChanged(noteOrder.copy(OrderType.Descending))
+                }
+            )
+        }
     }
 }

@@ -18,6 +18,7 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
 import com.jsoro.notesapp.feature_note.presentation.notes.components.NoteItem
 import com.jsoro.notesapp.feature_note.presentation.notes.components.OrderSection
+import com.jsoro.notesapp.feature_note.presentation.util.Screen
 import kotlinx.coroutines.launch
 
 // Esta clase es el @Composable principal de la aplicación. Contiene los composables que se pueden
@@ -49,11 +50,14 @@ fun NotesScreen(
     val scaffoldState = rememberScaffoldState()
     val scope = rememberCoroutineScope()
 
+    // Estructura principal de la composición de la pantalla.
     Scaffold(
         // Botón flotante para añadir nueva nota.
         floatingActionButton = {
             FloatingActionButton(onClick = {
-            }, backgroundColor = MaterialTheme.colors.primary
+                navController.navigate(Screen.AddEditNoteScreen.route)
+            },
+                backgroundColor = MaterialTheme.colors.primary
             ) {
                 Icon(imageVector = Icons.Default.Add, contentDescription = "Añadir nota")
             }
@@ -114,9 +118,13 @@ fun NotesScreen(
                         note = note,
                         modifier = Modifier
                             .fillMaxWidth()
-                            // Ejecutar cuando se seleccione una nota en concreto mediante clic.
+                            // Ejecutar cuando se seleccione una nota en concreto, contiene la ruta
+                            // de navegación para cambiar la vista a añadir/editar notas.
                             .clickable {
-                                /* TODO */
+                                navController.navigate(
+                                    Screen.AddEditNoteScreen.route +
+                                            "?noteId=${note.id}&noteColor=${note.color}"
+                                )
                             },
                         onDeleteClick = {
                             viewModel.onEvent(NotesEvent.DeleteNote(note))

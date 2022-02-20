@@ -48,12 +48,10 @@ fun NoteItem(
     cornerRadius: Dp = 10.dp,
     cutCornerSize: Dp = 30.dp,
     onDeleteClick: () -> Unit
-
 ) {
     Box(
         modifier = modifier
     ){
-
         Canvas(modifier = Modifier.matchParentSize()) {
             val clipPath = Path().apply {
                 lineTo(size.width - cutCornerSize.toPx(), 0f)
@@ -65,8 +63,13 @@ fun NoteItem(
             // Rectángulo pequeño, esquina doblada
             clipPath(clipPath) {
                 drawRoundRect(
+                    color = Color(note.color),
+                    size = size,
+                    cornerRadius = CornerRadius(cornerRadius.toPx())
+                )
+                drawRoundRect(
                     color = Color(
-                        (ColorUtils.blendARGB(note.color, 0x000000, 0.3f))
+                        ColorUtils.blendARGB(note.color, 0x000000, 0.2f)
                     ),
                     topLeft = Offset(size.width - cutCornerSize.toPx(), -100f),
                     size = Size(cutCornerSize.toPx() + 100f, cutCornerSize.toPx() + 100f),
@@ -77,7 +80,7 @@ fun NoteItem(
         Column (
             modifier = Modifier
                 .fillMaxSize()
-                .padding(14.dp)
+                .padding(16.dp)
                 .padding(end = 32.dp) // Para que no incluya el icono de la papelera dentro.
                 ) {
             Text( // Título de cada nota.
@@ -102,7 +105,8 @@ fun NoteItem(
         ) {
             Icon(
                 imageVector = Icons.Default.Delete,
-                contentDescription = "Borrar nota"
+                contentDescription = "Borrar nota",
+                tint = MaterialTheme.colors.onSurface
             )
         }
     }
